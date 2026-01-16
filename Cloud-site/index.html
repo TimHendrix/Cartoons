@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<title>Tim Hendrix – Cartoon Art</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#0e0e0e;color:#fff}
+header{text-align:center;padding:80px 20px;background:#111}
+h1{margin:0;font-size:42px}
+p{color:#aaa}
+
+section{padding:70px 20px;border-top:2px solid #222}
+h2{text-align:center;margin-bottom:30px}
+
+.gallery{
+  max-width:1400px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:16px;
+}
+.gallery img{
+  width:100%;
+  border-radius:14px;
+  cursor:pointer;
+  transition:.2s;
+}
+.gallery img:hover{transform:scale(1.04)}
+
+#lightbox{
+  position:fixed;inset:0;
+  background:rgba(0,0,0,.9);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:100;
+}
+#lightbox img{max-width:92%;max-height:92%;border-radius:16px}
+
+footer{text-align:center;padding:40px;color:#777}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Tim Hendrix</h1>
+  <p>Digitale caricaturen & cartoon illustraties</p>
+</header>
+
+<section><h2>Groepscartoon met achtergrond</h2><div class="gallery" id="groep"></div></section>
+<section><h2>Cartoon met achtergrond</h2><div class="gallery" id="achtergrond"></div></section>
+<section><h2>Cartoon-stelletjes</h2><div class="gallery" id="stelletjes"></div></section>
+<section><h2>Cartoon-portret</h2><div class="gallery" id="portret"></div></section>
+<section><h2>Cartoon-portret met lichaam</h2><div class="gallery" id="lichaam"></div></section>
+<section><h2>Voorbeelden</h2><div class="gallery" id="voorbeelden"></div></section>
+
+<footer>© Tim Hendrix — All artwork by Tim Hendrix</footer>
+
+<div id="lightbox" onclick="this.style.display='none'">
+  <img id="lightboxImg">
+</div>
+
+<script>
+function openImg(src){
+  document.getElementById("lightboxImg").src = src;
+  document.getElementById("lightbox").style.display = "flex";
+}
+
+function loadGallery(id, folder, files){
+  const box = document.getElementById(id);
+  files.forEach(f=>{
+    const img=document.createElement("img");
+    img.src=`images/${folder}/${f}`;
+    img.onclick=()=>openImg(img.src);
+    box.appendChild(img);
+  });
+}
+
+/* ====== EDIT ONLY FILENAMES IF NEEDED ====== */
+
+loadGallery("groep","groepscartoon-met-achtergrond",[
+  "DevelopmentTeam.jpg",
+  "Nerd_Culture.jpg",
+  "PatrickMarjolein.jpg",
+  "Pintenwippers_Dommelsch.jpg",
+  "Roddelpraat.jpg",
+  "RoodWitPodcast.jpg",
+  "Rox&Nikki.jpg",
+  "ThijsIulianaPrint.jpg",
+  "Vandaaginside.jpg",
+  "WimGerrie_Merged.jpg"
+]);
+
+loadGallery("achtergrond","cartoon-met-achtergrond",[
+  "BBQ_2025.jpg",
+  "Markje_Merged-website.jpg",
+  "LuukdeJongMerged.jpg",
+  "cosignbackground.jpg",
+  "prins_Rob_Dun_Uurste.jpg",
+  "Dennis_Laser.jpg",
+  "omeJoostMail.jpg"
+]);
+
+loadGallery("stelletjes","cartoon-stelletjes",[
+  "Alex&Sheba.jpg",
+  "Roddelstel.jpg"
+]);
+
+loadGallery("portret","cartoon-portret",[
+  "AmberHeard.jpg",
+  "Peter_Print.jpg",
+  "Thijs.jpg",
+  "davidP.jpg"
+]);
+
+loadGallery("lichaam","cartoon-portret-met-lichaam",[
+  "GeneTakovic_merged.jpg",
+  "Johan-Website.jpg",
+  "KimWexler_test.jpg",
+  "LaloSalamanca_test.jpg",
+  "MFranseze copy.jpg",
+  "NachoVarga_test.jpg",
+  "Prins_Boris_2025.jpg",
+  "davidL.jpg"
+]);
+
+loadGallery("voorbeelden","voorbeelden",[
+  "david.jpg",
+  "KimWexler.jpg",
+  "Nacho.jpg",
+  "Xaja.jpg"
+]);
+</script>
+
+</body>
+</html>
